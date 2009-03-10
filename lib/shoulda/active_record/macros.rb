@@ -107,7 +107,7 @@ module Shoulda # :nodoc:
 
         attributes.each do |attribute|
           matcher = allow_mass_assignment_of(attribute)
-          should matcher.description do
+          should "not #{matcher.description}" do
             assert_accepts matcher, klass.new
           end
         end
@@ -123,7 +123,7 @@ module Shoulda # :nodoc:
 
         attributes.each do |attribute|
           matcher = allow_mass_assignment_of(attribute)
-          should "not #{matcher.description}" do
+          should matcher.description do
             assert_rejects matcher, klass.new
           end
         end
